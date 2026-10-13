@@ -61,7 +61,7 @@ form?.addEventListener("submit", (event) => {
 		"",
 		String(data.get("mensaje") || "").trim()
 	].join("\n");
-	const href = `mailto:hola@atrio.co?subject=${encodeURIComponent(`Consulta · ${nombre || telefono}`)}&body=${encodeURIComponent(body)}`;
+	const href = `mailto:hola@adminatrio.com?subject=${encodeURIComponent(`Consulta · ${nombre || telefono}`)}&body=${encodeURIComponent(body)}`;
 	const note = form.querySelector(".form-note");
 	const link = note.querySelector("a");
 	link.href = href;

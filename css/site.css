@@ -747,20 +747,41 @@ textarea {
 	gap: 14px;
 }
 
-.form-note {
-	display: none;
+.sent-dialog {
+	width: min(440px, calc(100% - 32px));
+	margin: auto;
+	padding: 28px;
+	border: 0;
+	border-radius: 28px;
+	background: var(--white);
+	color: var(--ink);
+	box-shadow: 0 24px 60px rgba(27, 49, 72, 0.18);
+}
+
+.sent-dialog::backdrop {
+	background: rgba(27, 49, 72, 0.46);
+}
+
+.sent-dialog h2 {
+	margin: 12px 0;
+	font-family: var(--serif);
+	font-weight: 400;
+	font-size: clamp(32px, 4vw, 42px);
+	letter-spacing: -0.03em;
+	line-height: 1.05;
+}
+
+.sent-dialog p:not(.eyebrow) {
 	margin: 0;
-	color: var(--navy);
-	font-size: 15px;
+	color: var(--muted);
+	font-size: 17px;
 }
 
-.form-note[data-fs-active] {
-	display: block;
-}
-
-.form-note a {
-	text-decoration: underline;
-	text-underline-offset: 3px;
+.sent-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 22px;
 }
 
 .call {

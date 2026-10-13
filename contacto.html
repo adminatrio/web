@@ -106,11 +106,6 @@
 						<textarea name="mensaje" required data-fs-field placeholder="Unidades, qué les preocupa hoy, si ya tienen contador."></textarea>
 					</label>
 					<button class="btn btn-navy" type="submit" data-fs-submit-btn>Enviar mensaje</button>
-					<p class="form-note" data-fs-error>
-						No se pudo enviar. Intente de nuevo o escríbanos a
-						<a href="mailto:hola@adminatrio.com">hola@adminatrio.com</a>.
-					</p>
-					<p class="form-note" data-fs-success>Recibimos su mensaje. El equipo de Atrio le responde pronto.</p>
 				</form>
 			</div>
 
@@ -120,8 +115,40 @@
 				<span><a href="index.html">Inicio</a> · <a href="blog/">Blog</a></span>
 			</footer>
 		</div>
+		<dialog class="sent-dialog" id="sent-dialog">
+			<p class="eyebrow" id="sent-kicker">Mensaje recibido</p>
+			<h2 id="sent-title">Ya lo contactaremos.</h2>
+			<p id="sent-copy">
+				Recibimos su mensaje. Si desea hablar con más urgencia, llame al 314 219 2278.
+			</p>
+			<div class="sent-actions">
+				<a class="btn btn-navy" id="sent-call" href="tel:+573142192278">Llamar al 314 219 2278</a>
+				<button class="btn btn-line" type="button" id="sent-close">Cerrar</button>
+			</div>
+		</dialog>
 		<script src="js/site.js"></script>
 		<script>
+			const sentDialog = document.querySelector("#sent-dialog");
+			const sentKicker = document.querySelector("#sent-kicker");
+			const sentTitle = document.querySelector("#sent-title");
+			const sentCopy = document.querySelector("#sent-copy");
+			const sentCall = document.querySelector("#sent-call");
+
+			const openSent = (ok) => {
+				sentKicker.textContent = ok ? "Mensaje recibido" : "No se pudo enviar";
+				sentTitle.textContent = ok ? "Ya lo contactaremos." : "Intente de nuevo.";
+				sentCopy.textContent = ok
+					? "Recibimos su mensaje. Si desea hablar con más urgencia, llame al 314 219 2278."
+					: "No pudimos enviar el formulario. Si desea hablar ahora, llame al 314 219 2278.";
+				sentCall.hidden = false;
+				if (!sentDialog.open) sentDialog.showModal();
+			};
+
+			document.querySelector("#sent-close").addEventListener("click", () => sentDialog.close());
+			sentDialog.addEventListener("click", (event) => {
+				if (event.target === sentDialog) sentDialog.close();
+			});
+
 			window.formspree =
 				window.formspree ||
 				function () {
@@ -130,7 +157,10 @@
 			formspree("initForm", {
 				formElement: "#contact-form",
 				formId: "xeaerrdy",
-				useDefaultStyles: false
+				useDefaultStyles: false,
+				onSuccess: () => openSent(true),
+				onError: () => openSent(false),
+				onFailure: () => openSent(false)
 			});
 		</script>
 		<script src="https://unpkg.com/@formspree/ajax@1" defer></script>

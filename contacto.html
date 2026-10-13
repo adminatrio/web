@@ -70,30 +70,31 @@
 					</div>
 				</div>
 
-				<form class="contact-form">
+				<form class="contact-form" id="contact-form">
+					<input type="hidden" name="_subject" value="Consulta desde adminatrio.com" />
 					<div class="form-row">
 						<label>
 							<span>Nombre</span>
-							<input name="nombre" autocomplete="name" required />
+							<input name="nombre" autocomplete="name" required data-fs-field />
 						</label>
 						<label>
 							<span>Correo</span>
-							<input name="correo" type="email" autocomplete="email" required />
+							<input name="email" type="email" autocomplete="email" required data-fs-field />
 						</label>
 					</div>
 					<div class="form-row">
 						<label>
 							<span>Teléfono</span>
-							<input name="telefono" type="tel" autocomplete="tel" required />
+							<input name="telefono" type="tel" autocomplete="tel" required data-fs-field />
 						</label>
 						<label>
 							<span>Ciudad</span>
-							<input name="ciudad" value="Bogotá" required />
+							<input name="ciudad" value="Bogotá" required data-fs-field />
 						</label>
 					</div>
 					<label>
 						<span>Escriben desde</span>
-						<select name="rol" required>
+						<select name="rol" required data-fs-field>
 							<option>Consejo de administración</option>
 							<option>Copropietario</option>
 							<option>Administración actual</option>
@@ -102,13 +103,14 @@
 					</label>
 					<label>
 						<span>Mensaje</span>
-						<textarea name="mensaje" required placeholder="Unidades, qué les preocupa hoy, si ya tienen contador."></textarea>
+						<textarea name="mensaje" required data-fs-field placeholder="Unidades, qué les preocupa hoy, si ya tienen contador."></textarea>
 					</label>
-					<button class="btn btn-navy" type="submit">Enviar mensaje</button>
-					<p class="form-note" hidden>
-						El mensaje quedó listo. Ábralo en su correo para enviarlo al equipo de Atrio.
-						<a href="mailto:hola@adminatrio.com">Abrir en el correo</a>
+					<button class="btn btn-navy" type="submit" data-fs-submit-btn>Enviar mensaje</button>
+					<p class="form-note" data-fs-error>
+						No se pudo enviar. Intente de nuevo o escríbanos a
+						<a href="mailto:hola@adminatrio.com">hola@adminatrio.com</a>.
 					</p>
+					<p class="form-note" data-fs-success>Recibimos su mensaje. El equipo de Atrio le responde pronto.</p>
 				</form>
 			</div>
 
@@ -119,5 +121,18 @@
 			</footer>
 		</div>
 		<script src="js/site.js"></script>
+		<script>
+			window.formspree =
+				window.formspree ||
+				function () {
+					(formspree.q = formspree.q || []).push(arguments);
+				};
+			formspree("initForm", {
+				formElement: "#contact-form",
+				formId: "xeaerrdy",
+				useDefaultStyles: false
+			});
+		</script>
+		<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 	</body>
 </html>

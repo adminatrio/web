@@ -45,25 +45,3 @@ document.querySelectorAll("[data-tabs]").forEach((root) => {
 	});
 });
 
-const form = document.querySelector(".contact-form");
-
-form?.addEventListener("submit", (event) => {
-	event.preventDefault();
-	const data = new FormData(form);
-	const nombre = String(data.get("nombre") || "").trim();
-	const telefono = String(data.get("telefono") || "").trim();
-	const body = [
-		`Nombre: ${nombre}`,
-		`Teléfono: ${telefono}`,
-		`Ciudad: ${String(data.get("ciudad") || "").trim()}`,
-		`Correo: ${String(data.get("correo") || "").trim()}`,
-		`Rol: ${String(data.get("rol") || "").trim()}`,
-		"",
-		String(data.get("mensaje") || "").trim()
-	].join("\n");
-	const href = `mailto:hola@adminatrio.com?subject=${encodeURIComponent(`Consulta · ${nombre || telefono}`)}&body=${encodeURIComponent(body)}`;
-	const note = form.querySelector(".form-note");
-	const link = note.querySelector("a");
-	link.href = href;
-	note.hidden = false;
-});

@@ -748,9 +748,14 @@ textarea {
 }
 
 .form-note {
+	display: none;
 	margin: 0;
 	color: var(--navy);
 	font-size: 15px;
+}
+
+.form-note[data-fs-active] {
+	display: block;
 }
 
 .form-note a {

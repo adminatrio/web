@@ -384,6 +384,64 @@ h1 span,
 	align-items: center;
 }
 
+.glance {
+	padding: 28px;
+	border-radius: 28px;
+	background: var(--paper);
+	border: 1px solid var(--line);
+}
+
+.glance h3 {
+	margin: 10px 0 18px;
+	font-family: var(--serif);
+	font-size: clamp(28px, 3vw, 36px);
+	font-weight: 400;
+	letter-spacing: -0.03em;
+	line-height: 1.05;
+}
+
+.glance-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+}
+
+.glance-grid article {
+	padding: 16px;
+	border-radius: 16px;
+	background: var(--white);
+	border: 1px solid var(--line);
+}
+
+.glance-grid span {
+	display: block;
+	color: var(--muted);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.glance-grid strong {
+	display: block;
+	margin-top: 8px;
+	font-size: 26px;
+	letter-spacing: -0.04em;
+}
+
+.glance-budget {
+	margin: 14px 0 0;
+	color: var(--muted);
+	font-size: 15px;
+}
+
+.glance-budget b {
+	display: block;
+	margin-bottom: 4px;
+	color: var(--ink);
+	font-weight: 600;
+}
+
 .board {
 	background: var(--paper);
 	border: 1px solid var(--line);
@@ -1107,6 +1165,10 @@ textarea {
 		height: auto;
 		aspect-ratio: 3 / 2;
 		object-position: center 18%;
+	}
+
+	.glance-grid strong {
+		font-size: 22px;
 	}
 
 	.tabs {

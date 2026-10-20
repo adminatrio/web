@@ -261,6 +261,14 @@ h1 span,
 	font-weight: 500;
 }
 
+.month-value {
+	margin: 18px 0 0;
+	color: var(--navy);
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
 .month small {
 	display: block;
 	padding: 8px 2px 12px;

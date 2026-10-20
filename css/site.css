@@ -276,6 +276,10 @@ h1 span,
 	font-size: 13px;
 }
 
+.band-tight .eyebrow {
+	margin-bottom: 18px;
+}
+
 .principles {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
